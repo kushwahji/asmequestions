@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" href="https://mdbgo.com/">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+        height="16"
+        alt="MDB Logo"
+        loading="lazy"
+        style="margin-top: 8px;"
+      />
+    </a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *appShowAuthed="true">
+        <li class="nav-item">
+          <a class="nav-link"
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <i class="ion-home"></i>&nbsp; Home
+          </a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link"
+            routerLink="/editor"
+            routerLinkActive="active">
+            <i class="ion-compose"></i>&nbsp;New Article
+          </a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link"
+            routerLink="/settings"
+            routerLinkActive="active">
+            <i class="ion-gear-a"></i>&nbsp;Settings
+          </a>
+        </li>
+  
+        <li class="nav-item">
+          <a class="nav-link"
+            [routerLink]="['/profile', currentUser.username]"
+            routerLinkActive="active">
+            <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+            {{ currentUser.username }}
+          </a>
+        </li>
+  
+      </ul>
+      <!-- Left links -->
+
+      <div class="d-flex align-items-center" *appShowAuthed="false">
+        <button type="button" class="btn btn-primary px-3 me-2" routerLink="/login"
+        routerLinkActive="active">
+          Login
+        </button>
+        <button type="button" class="btn btn-primary me-3" routerLink="/register"
+        routerLinkActive="active">
+          Sign up for free
+        </button>
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
