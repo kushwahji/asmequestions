@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "n start",
+    "start": "node server.js",
     "build": "ng build --prod  --base-href",
     "test": "ng test",
     "lint": "ng lint --force",
@@ -32,7 +32,8 @@
     "marked": "^0.3.9",
     "rxjs": "^6.4.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.3"
+    "zone.js": "~0.11.3",
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1102.7",
