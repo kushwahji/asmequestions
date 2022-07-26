@@ -1,81 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <!-- Container wrapper -->
-  <div class="container">
-    <!-- Navbar brand -->
-    <a class="navbar-brand me-2" href="https://mdbgo.com/">
-      <img
-        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-        height="16"
-        alt="MDB Logo"
-        loading="lazy"
-        style="margin-top: 8px;"
-      />
-    </a>
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">AskMeQuestion</a>
+    <!-- Show this for logged out users -->
+    <ul class="nav navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">
+          <i class="ion-home"></i> &nbsp; Home <span class="sr-only">(current)</span> &nbsp;
+        </a>
+      </li>
 
-    <!-- Toggle button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *appShowAuthed="true">
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
-            <i class="ion-home"></i>&nbsp; Home
-          </a>
+    </ul>
+    <ul *appShowAuthed="true" class="nav navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/editor" routerLinkActive="active">
+          <i class="ion-compose"></i>&nbsp;New Article
+        </a>
+      </li>
+      
+    </ul>
+    <ul *appShowAuthed="true" class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+          &nbsp;&nbsp;&nbsp;<i class="ion-gear-a"></i>&nbsp;
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/profile', currentUser.username]" routerLinkActive="active">
+          <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" /> H!
+          {{ currentUser.username | uppercase}}
+        </a>
         </li>
-  
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/editor"
-            routerLinkActive="active">
-            <i class="ion-compose"></i>&nbsp;New Article
-          </a>
-        </li>
-  
-        <li class="nav-item">
-          <a class="nav-link"
-            routerLink="/settings"
-            routerLinkActive="active">
-            <i class="ion-gear-a"></i>&nbsp;Settings
-          </a>
-        </li>
-  
-        <li class="nav-item">
-          <a class="nav-link"
-            [routerLink]="['/profile', currentUser.username]"
-            routerLinkActive="active">
-            <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
-            {{ currentUser.username }}
-          </a>
-        </li>
-  
       </ul>
-      <!-- Left links -->
-
-      <div class="d-flex align-items-center" *appShowAuthed="false">
-        <button type="button" class="btn btn-primary px-3 me-2" routerLink="/login"
-        routerLinkActive="active">
-          Login
-        </button>
-        <button type="button" class="btn btn-primary me-3" routerLink="/register"
-        routerLinkActive="active">
-          Sign up for free
-        </button>
-        <form>
-          <input class="form-control"
-                formControlName="description"
-                type="text"
-                placeholder="What's is your question?" />
-        </form>
-      </div>
-    </div>
-    <!-- Collapsible wrapper -->
+      
+    <form class="form-inline nav navbar-nav pull-xs-right">
+      <input class="form-control col-lg-8" type="search" placeholder="What is your question ?" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="nav navbar-nav pull-xs-right" *appShowAuthed="false">
+      <button type="button" class="btn btn-link px-3 me-2" routerLink="/login" routerLinkActive="active">
+        Login
+      </button>
+      <button type="button" class="btn btn-link me-3" routerLink="/register" routerLinkActive="active">
+        Sign up
+      </button>
+    </div> <!-- Show this for logged in users -->
   </div>
-  <!-- Container wrapper -->
 </nav>

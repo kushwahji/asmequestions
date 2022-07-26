@@ -1,7 +1,8 @@
 <div class="home-page">
+
   <div class="banner" *appShowAuthed="false">
     <div class="container">
-      <h1 class="logo-font">BLOG</h1>
+      <h1 class="logo-font">conduit</h1>
       <p>A place to share your <i>Angular</i> knowledge.</p>
     </div>
   </div>
@@ -31,6 +32,12 @@
                 <i class="ion-pound"></i> {{ listConfig.filters.tag }}
               </a>
             </li>
+            <li class="nav-item pull-xs-right">
+              <a class="nav-primary" routerLink="/editor">
+                <i class="ion-compose"></i>&nbsp;Ask Me Question
+              </a>
+            </li>
+            
           </ul>
         </div>
 
